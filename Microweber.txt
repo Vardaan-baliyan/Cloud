@@ -1,0 +1,18 @@
+          *// After Lamp Stack Run these Commands //*
+wget https://microweber.com/download.php -O microweber-latest.zip
+
+
+
+sudo unzip microweber-latest.zip -d /var/www/html/
+
+
+*// Changing the permissions and Ownership //*
+
+sudo chown -R www-data:www-data /var/www/html/
+sudo chmod -R 755 /var/www/html/
+
+mv /path/sourcefolder/* /path/destinationfolder/
+
+
+sudo a2enmod rewrite
+sudo systemctl restart apache2.service
