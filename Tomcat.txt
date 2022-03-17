@@ -1,0 +1,23 @@
+*// Installing  Apache Tomcat *//
+
+Sudo su
+apt update
+apt upgrade -y
+ 
+*// search & Install tomcat versions *//
+
+apt-cache search tomcat
+sudo apt install tomcat9 tomcat9-admin
+
+
+ss -ltn       *// check *//
+
+
+systemctl enable tomcat9
+
+*// Opening Port *//
+
+sudo ufw allow from any to any port 8080 proto tcp
+
+
+*// Go to browser give the IP:8080 to see tomcat in action *//
