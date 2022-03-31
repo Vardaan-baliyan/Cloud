@@ -1,0 +1,62 @@
+#!/bin/bash
+apt update
+apt upgrade -y
+echo "wait for 50 seconds"  
+sleep 50s   
+apt install apache2 -y
+echo "wait for 15 seconds"  
+sleep 15s   
+echo "apache installed"
+systemctl enable apache2
+systemctl restart apache2
+
+#Now Install Mysql
+apt install mysql-server -y
+
+echo "wait for 15 seconds"  
+sleep 15s   
+echo "Mysql8.0 Installed"
+systemctl enable mysql.service
+systemctl start mysql.service
+
+#Setting up the Password for Mysql
+sudo mysql  << EOF
+create database dbname;
+GRANT ALL ON dbname. * To 'root'@'localhost' WITH GRANT OPTION;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'miri';
+FLUSH PRIVILEGES; 
+EOF
+
+#Installing PHP
+apt install php -y
+echo "wait for 10 seconds"  
+sleep 10s   
+apt update
+sudo apt install php7.4 libapache2-mod-php7.4 php7.4-common php7.4-mysql php7.4-gmp php7.4-curl php7.4-intl php7.4-mbstring php7.4-xmlrpc php7.4-gd php7.4-xmlphp7.4-cli php7.4-zip -y
+echo "wait for 15 seconds"  
+sleep 15s   
+echo "PHP7.4 Installed"
+service apache2 restart
+
+#Editing php.ini File
+sed -i 's/file_uploads = off/file_uploads = On/g' /etc/php/7.4/apache2/php.ini
+sed -i 's/short_open_tag = off/short_open_tag = On/g' /etc/php/7.4/apache2/php.ini
+sed -i 's/memory_limit = 128M/memory_limit = 256M/g' /etc/php/7.4/apache2/php.ini
+sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 100M/g' /etc/php/7.4/apache2/php.ini
+sed -i 's/max_execution_time = 30/upload_max_filesize = 360/g' /etc/php/7.4/apache2/php.ini
+echo "File edited Successfully"
+sudo systemctl restart apache2.service
+
+#LAMP Successfully Installed.
+#Now Edit the Below Code as per Requirements.
+cd /var/www/
+apt install unzip -y
+wget #link here
+unzip /var/www/CubeCart-6.5.0-b1.zip -d /var/www/html/
+#mv /var/www/html/sourcefolder/* /var/www/html/destinationfolder/
+chmod 0777 -R /var/www/html
+chown www-data:www-data /var/www/html
+a2enmod rewrite
+systemctl restart apache2.service
+echo "Task Completed"
+
