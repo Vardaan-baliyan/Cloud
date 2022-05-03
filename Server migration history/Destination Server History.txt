@@ -1,0 +1,100 @@
+Desitination server history :    
+
+   1  apt update
+    2  apt upgrade -y
+    3  cd /
+    4  clear
+    5  nano test.txt
+    6  ls
+    7  clear
+    8  ls
+    9  clear
+   10  cat test.txt
+   11  sudo apt install rsync grsync
+   12  ls
+   13  ls /home/ubuntu/
+   14  cat /home/ubuntu/sample.txt
+   15  cd /var/
+   16  ls
+   17  cd /
+   18  cd /home/ubuntu/
+   19  ls
+   20  mv -v html.tar.gz /
+   21  ls
+   22  cd /
+   23  ls
+   24  apt install apache2
+   25  nano /etc/apache2/apache2.conf
+   26  apt update
+   27  apt upgrade -y
+   28  systemctl restart apache2.service
+   29  systemctl enable apache2.service
+   30  clear
+   31  apt install wget -y
+   32  wget https://dev.mysql.com/get/mysql-apt-config_0.8.12-1_all.deb
+   33  sudo dpkg -i mysql-apt-config_0.8.12-1_all.deb
+   34  apt update
+   35  apt upgrade -y
+   36  sudo apt-cache policy mysql-server
+   37  sudo apt install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7*
+   38  systemctl restart apache2.service
+   39  systemctl restart mysql.service
+   40  systemctl enable mysql.service
+   41  apt-get install software-properties-common
+   42  add-apt-repository ppa:ondrej/php
+   43  apt update
+   44  apt upgrade -y
+   45  sudo apt install php7.4 libapache2-mod-php7.4 php7.4-common php7.4-mysql php7.4-gmp php7.4-curl php7.4-intl php7.4-mbstring php7.4-xmlrpc php7.4-gd php7.4-xml php7.4-cli php7.4-zip
+   46  nano /etc/php/7.4/apache2/php.ini
+   47  apt update
+   48  apt upgrade -y
+   49  cd /var/www/html
+   50  ls
+   51  rm -fr index.html
+   52  mv -v /html.tar.gz ./
+   53  ls
+   54  tar -xzvf html.tar.gz
+   55  ls
+   56  mv -v html/* ./
+   57  mv -v html/.* ./
+   58  clear
+   59  ls
+   60  mysql -u root -p wordpress < wordpress.sql
+   61  mysql -u root -p -e wordpress < wordpress.sql
+   62  clear
+   63  ls
+   64  mysql -u root -p
+   65  mysql -u root -p -e "CREATE DATABASE wordpress";
+   66  mysql -u root -p wordpress < wordpress.sql
+   67  mysql wordpress < wordpress.sql
+   68  chmod -R 775 wordpress.sql
+   69  chown -R www-data:www-data wordpress.sql
+   70  mysql -u root -p wordpress < wordpress.sql
+   71  clear
+   72  ls
+   73  mysql -u root -p
+   74  ls
+   75  rm -fr database.sql wordpress.sql
+   76  clear
+   77  ls
+   78  cd /home/ubuntu/
+   79  mysql * < all_databases.sql
+   80  mysql -u root -p
+   81  l
+   82  sls
+   83  ls
+   84  mysql -u root -p wordpress < wordpress.sql
+   85  mysql -u root -p
+   86  clear
+   87  ls
+   88  systemctl restart apache2.service
+   89  ls
+   90  cd /var/www/html
+   91  ls
+   92  ls html
+   93  rm -fr html
+   94  nan0 wp-config.php
+   95  nano wp-config.php
+   96  systemctl restart apache2.service
+   97  clear
+   98  history

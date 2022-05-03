@@ -1,0 +1,13 @@
+sudo mysql -u root -p
+create database name;
+show databases;
+GRANT ALL ON NAME. * To 'root'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+
+
+*********Special cmd to Move all Files********
+
+
+mv /path/sourcefolder/* /path/destinationfolder/

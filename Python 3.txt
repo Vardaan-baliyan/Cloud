@@ -1,0 +1,6 @@
+ python3
+
+from ctypes import*
+
+c_double.from_param(1e300)
+

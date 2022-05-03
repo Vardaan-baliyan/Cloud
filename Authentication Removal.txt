@@ -1,0 +1,20 @@
+Account ID - 368772107083
+
+
+
+# Authentication Removal from EC2 Instance 
+
+*// From Root User *//
+
+rm -rf /root/.ssh/authorized-keys
+
+
+*//  From Ubuntu/normal user *//
+
+rm -rf /home/ubuntu/.ssh/authorized-keys
+
+
+
+arn:aws:iam::368772107083:role/marketplaceAMI
+
+

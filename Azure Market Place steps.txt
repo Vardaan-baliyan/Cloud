@@ -1,0 +1,32 @@
+Use this in contact mail ---  contact@nilespartners.in
+
+And this is connection string---- 
+DefaultEndpointsProtocol=https;AccountName=nilesmarketplaceleads;AccountKey=KN1X+zFEQLPv4x1uHMpfDTBmqQRcPicgP1NvtJcORWMWcBfmFojEy2V7gUnkHeESUORUwmOgJef8+AStAHnHBw==;EndpointSuffix=core.windows.net
+
+
+
+*******properties legal section*******
+ 
+We do not currently support refunds, but you can cancel at any time.
+User agreement: https://nilespartners.in/eula
+for support, please contact: https://nilespartners.in/contact
+
+*******privacy policy link******
+
+
+https://nilespartners.in/privacy-policy
+
+
+*********About*********
+Link from Niles Partners.
+
+***********Contact details*****************
+Partner support contact ;
+Name-Support
+Email-support@nilespartners.in
+Phone-(510) 298-5936
+
+Engineering contact
+Name-Contact
+Email-contact@nilespartners.in
+Phone-(510) 298-5936

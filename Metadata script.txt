@@ -1,0 +1,39 @@
+
+#!/bin/bash
+apt update && apt upgrade -y
+apt install apache2 -y
+systemctl start apache2
+systemctl enable apache2
+cd /var/www/html
+rm -rf index.html
+
+v1=$(curl http://169.254.169.254/latest/meta-data/hostname)
+v2=$(curl http://169.254.169.254/latest/meta-data/ami-id)
+v3=$(curl http://169.254.169.254/latest/meta-data/network/interfaces/macs)
+v4=$(curl http://169.254.169.254/latest/meta-data/instance-life-cycle)
+v5=$(curl http://169.254.169.254/latest/meta-data/placement/availability-zone)
+v6=$(curl http://169.254.169.254/latest/meta-data/mac)
+v7=$(curl http://169.254.169.254/latest/meta-data/block-device-mapping/ami)
+v8=$(curl http://169.254.169.254/latest/meta-data/instance-type)
+v9=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+v10=$(curl http://169.254.169.254/latest/meta-data/public-hostname)
+v11=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+
+
+echo -e "Hostname= "$v1"<br>" >> index.html
+echo -e "\n""AMI ID= "$v2"""<br>" >> index.html
+echo -e "\n""Network Details= "$v3"""<br>" >> index.html
+echo -e "\n""Instance Life-Cycle= "$v4"""<br>" >> index.html
+echo -e "\n""AZ= "$v5"""<br>" >> index.html
+echo -e "\n""Mac Address= "$v6"""<br>" >> index.html
+echo -e "\n""AMI= "$v7"""<br>" >> index.html
+echo -e "\n""Instance Type= "$v8"""<br>" >> index.html
+echo -e "\n""Local ipv4= "$v9"""<br>" >> index.html
+echo -e "\n""Public-hostname= "$v10"""<br>" >> index.html
+echo -e "\n""Instance-id= "$v11"""<br>" >> index.html
+chmod 755 index.html
+service apache2 restart
+
+
+
+

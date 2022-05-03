@@ -1,0 +1,67 @@
+Source Server history : 
+
+    1  apt update
+    2  apt upgrade -y
+    3  cd /var/www/html
+    4  ls
+    5  clear
+    6  mysql -u root -p
+    7  clear
+    8  mysql -u root -p
+    9  clear
+   10  mysql -u root -p i-0d681b3409d7352b7 wordpress > wordpress.sql
+   11  ls
+   12  mysql -u root -p i-0d681b3409d7352b7 * > database.sql
+   13  ls
+   14  nano database.sql
+   15 
+   16  cd /
+   17  touch sample.txt
+   18  nano sample.txt
+   19  rsync /sample.txt root@3.129.249.162 /
+   20  rsync /sample.txt root@3.129.249.162:/
+   21  nano shubham.pem
+   22  chmod -R 400 /shubham.pem
+   23  ssh ubuntu@3.129.249.162 -i shubham.pem
+   24  clear
+   25  rsync -avz -e "ssh -i /shubham.pem" sample.txt ubuntu@3.129.249.162:/
+   26  ls
+   27  chmod -R 777 /sample.txt
+   28  rsync -avz -e "ssh -i /shubham.pem" sample.txt ubuntu@3.129.249.162:/
+   29  rsync -avz -e "ssh -i /shubham.pem" sample.txt ubuntu@3.129.249.162:/home                                                                     /ubuntu/
+   30  cd /var/www/html/
+   31  cd ..
+   32  ls /
+   33  cat sample.txt
+   34  cat /sample.txt
+   35  tar -czvf html.tar.gz ./html/
+   36  ls
+   37  rsync -avz -e "ssh -i /shubham.pem" /var/www/html.tar.gz  ubuntu@3.129.24                                                                     9.162:/home/ubuntu/
+   38  ls
+   39  cd html
+   40  ls
+   41  mysql -u root -p
+   42  clear
+   43  mysql -u root -p
+   44  mysql -u root -p i-0d681b3409d7352b7 shubham > shubham.sql
+   45  ks
+   46  ls
+   47  mysql -u root -p
+   48  mysql -u root -p i-0d681b3409d7352b7 shubham < shubham.sql
+   49  mysql -u root -p
+   50  clear
+   51  ls
+   52  rm -fr database.sql wordpress.sql
+   53  ls
+   54  rm -fr shubham.sql
+   55  cd /
+   56  mysqldump -u root -p --all-databases > all_databases.sql
+   57  rsync -avz -e "ssh -i /shubham.pem" /all_databases.sql  ubuntu@3.129.249.                                                                     162:/home/ubuntu/
+   58  clear
+   59  ls
+   60  mysqldump -u root -p wordpress > wordpress.sql
+   61  mysql -u root -p wordpress < wordpress.sql
+   62  rsync -avz -e "ssh -i /shubham.pem" /wordpress.sql.sql  ubuntu@3.129.249.                                                                     162:/home/ubuntu/
+   63  rsync -avz -e "ssh -i /shubham.pem" /wordpress.sql  ubuntu@3.129.249.162:                                                                     /home/ubuntu/
+   64  clear
+   65  history

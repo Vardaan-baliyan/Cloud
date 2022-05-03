@@ -1,0 +1,19 @@
+
+******************************************************************SSL*************************************************************
+
+
+1- Install the OpenSSL on the VM.
+2- Go to the below site and generate the command;
+https://www.digicert.com/easy-csr/openssl.htm
+
+3- Run the command that is generated and you will get a .csr file on the VM.
+4- Upload the .csr file on the SSL provider website(like godaddy).From there you will get .key file and .cert file.
+5- Note the location of these files.
+6- Make changes in your apache conf file.
+7- It should work on port443 rather than port80.
+
+Site for help;
+https://www.ssltrust.in/help/setup-guides/apache-ubuntu-ssl-install-guide
+
+
+************************************************************************************************************************************

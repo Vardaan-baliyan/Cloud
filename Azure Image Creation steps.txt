@@ -1,0 +1,52 @@
+*******Steps for Azure Product**********
+
+Create the resource group and the virtual machine.
+
+After SSH commands used:-
+
+sudo su 
+apt update
+apt upgrade -y
+
+
+*// Now install the required Product *//
+
+*// check the product using Ip fire on Browser*//
+
+
+*************// Further Steps *//************
+
+history -c
+apt update
+sudo apt-get install walinuxagent
+
+
+*****After these commands , execute the Certification Test*****
+
+rm -fr ~/.bash_history   *// cmd to remove bash history //*
+
+
+*********** Steps to Create the Image *****************
+waagent -deprovision+user –force   ( Run in putty )
+
+
+*// After the above command open the command prompt *//
+az login 
+
+az vm deallocate --resource-group myResourceGroup --name myVM
+az vm generalize --resource-group myResourceGroup --name myVM
+
+******************************************************************************************************************************
+
+
+Once your VM is ready, you can capture it in an Azure Compute Gallery (formerly know as Shared Image Gallery). Follow the below steps to capture:
+
+On the Azure portal, go to your Virtual Machine’s page.
+Select Capture.
+Under Share image to Azure Compute Gallery select Yes, share it to a gallery as an image version.
+Under Operating system state select Generalized.
+Select a Target image gallery.
+Select a Target image definition.
+Provide a Version number for the image.
+Select Review + create to review your choices.
+Once the validation is passed, select Create.

@@ -1,0 +1,150 @@
+﻿Ports Required:-
+8088
+50070
+50090
+9870
+
+***************************Install openjdk11*************************************
+apt update 
+java -version
+sudo apt-get install openjdk-11-jdk
+
+**********************Configuring and installing hadoop****************************
+cd /
+mkdir hadoop
+mkdir hadooptmp
+cd /hadoop
+wget ( Link from official site )
+tar -xvzf hadoop
+mv /path/sourcefolder/* /path/destinationfolder/    ( move hadoop files in the folder that we have created )
+
+*************************************************************************************
+nano ~/.bashrc 
+
+*//add these lines in the last and modify the path;*//
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export HADOOP_HOME=/hadoop
+export HADOOP_INSTALL=$HADOOP_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export HADOOP_YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
+***************************************************************************
+
+source ~/.bashrc 
+
+**************************************************************
+*//Next, open the Hadoop environment variable file:*//
+
+nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh 
+
+Set JAVA_HOME;
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+
+
+************Configuring Hadoop***************************
+*//First, you will need to create the namenode and datanode directories inside Hadoop home directory:*//
+
+mkdir -p /hadoopdata/hdfs/namenode 
+mkdir -p /hadoopdata/hdfs/datanode 
+
+***************Steps for Configuration:-**********************************
+1-core-site.xml 
+
+nano $HADOOP_HOME/etc/hadoop/core-site.xml 
+
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/hadooptmp/hadoop-${user.name}</value>
+<description>A base for other temporary directories.</description>
+</property>
+<property>
+<name>fs.default.name</name>
+<value>hdfs://100.26.134.9:9000</value>
+</property>
+
+2- hdfs-site.xml
+
+nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml 
+
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+<property><name>dfs.name.dir</name>
+<value>file:///hadoopdata/hdfs/namenode</value>
+</property>
+<property>
+<name>dfs.data.dir</name>
+<value>file:///hadoopdata/hdfs/datanode</value>
+</property>
+
+3- mapred-site.xml
+
+nano $HADOOP_HOME/etc/hadoop/mapred-site.xml 
+
+<property>
+<name>mapred.job.tracker</name>
+<value>http://100.26.134.9:9001</value>
+</property>
+
+4- yarn-site.xml 
+
+nano $HADOOP_HOME/etc/hadoop/yarn-site.xml 
+
+<property>
+<name>yarn.nodemanager.aux-services</name>
+<value>mapreduce_shuffle</value>
+</property>
+
+5- $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+
+nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+
+
+export HDFS_NAMENODE_USER="root"
+export HDFS_DATANODE_USER="root"
+export HDFS_SECONDARYNAMENODE_USER="root"
+export YARN_RESOURCEMANAGER_USER="root"
+export YARN_NODEMANAGER_USER="root"
+
+6- nano /etc/hosts
+
+*//Here place your private IP in the format shown below:-*//
+
+10.0.0.0 ip-10-0-0-0
+
+*************************************************************************************
+*//Generating the rsa key;*//
+
+ssh-keygen -t rsa 
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 
+chmod 640 ~/.ssh/authorized_keys 
+*******************************************************
+*//ssh localhost and run the hadoop clusters;*//
+
+ssh localhost 
+hdfs namenode –format
+start-all.sh
+*****************************************************************
+*//Command to list all the running nodes;*//
+jps
+
+*******************************************************************
+*//After the above command executes successfully, you should check the below urls in the browser -*//
+http://<instance-public-ip>:8088
+
+*****************************************************************
+****************How to Stop Hadoop Cluster;***********************************
+#To stop the Hadoop Namenode service, run the following command as a hadoop user:
+stop-dfs.sh 
+
+#To stop the Hadoop Resource Manager service, run the following command:
+
+stop-yarn.sh 
+

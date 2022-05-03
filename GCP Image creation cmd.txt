@@ -1,0 +1,1 @@
+gcloud compute images create miriinfotech-public-ubuntu2004lts-oxid-eshop-v6-1-5 --project miriinfotech-public --source-disk projects/miriinfotech-public/zones/us-east4-c/disks/oxid --licenses projects/miriinfotech-public/global/licenses/oxid-eshop-v6-1-5 --description oxid

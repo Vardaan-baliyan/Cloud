@@ -1,0 +1,24 @@
+
+***************************************************************************
+***Apache Log4j Vulnerablity***
+
+Download the latest version of log4j and extract to a directory.
+Look for the log4j core jar files
+ 
+ find / -type f -name log4*
+ 
+ ls | grep core 
+
+
+Replace all the core files with the new one
+***Imp files***
+core
+slf4j
+api
+web
+exporter
+
+
+cp <source> <destination>
+	    
+***************************************************************************

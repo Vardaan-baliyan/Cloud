@@ -1,0 +1,42 @@
+#!/bin/bash
+mkdir /home/backup
+
+DATE=$(date +%d-%m-%Y)
+BACKUP_DIR=”/home/backup”
+
+# take each website’s backup in separate name, use below format #
+tar -zcvpf $BACKUP_DIR/backup-$DATE.tar.gz /var/www/html/
+
+#tar -zcvpf /root/backup/backup-fresh.tar /var/www/html/
+
+
+# Delete files older than 7 days #
+find $BACKUP_DIR/* -mtime +7 -exec rm {} \;
+
+
+#!/bin/bash
+
+# Compress the folder with foldername + date and take backup
+filename="backup_`date +%d`_`date +%m`_`date +%Y`.tar";
+
+# Create compressed file using tar and move to backup folder
+tar cvf /home/backup/$filename /var/www/html/
+
+# Move to Backup folder
+cd /home/backup
+
+echo "Backup Complete"
+
+find "/home/backup" -type f -mtime +7 -exec rm {} \;
+
+
+
+
+
+
+
+
+
+
+
+

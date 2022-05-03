@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template to Create an IAM Role and attaching required policies
+
+Resources:
+  MyTestRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              "AWS": "368772107083"
+            Action:
+              - 'sts:AssumeRole'
+      Description: Role to provide access
+      Policies:
+        - PolicyName: SMC_CostExplorer
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+             - Effect: Allow
+               Action: 'ce:*'
+               Resource: '*'
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+        - arn:aws:iam::aws:policy/job-function/Billing
+        - arn:aws:iam::aws:policy/AWSAccountUsageReportAccess
+      RoleName: SMC_role

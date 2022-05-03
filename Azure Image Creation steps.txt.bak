@@ -1,0 +1,44 @@
+*******Steps for Azure Product**********
+
+Create the resource group and the virtual machine.
+
+After SSH commands used:-
+
+sudo su 
+apt update
+apt upgrade -y
+
+
+*// Now install the required Product *//
+
+*// check the product using Ip fire on Browser*//
+
+
+*************// Further Steps *//************
+
+history -c
+apt update
+sudo apt-get install walinuxagent
+
+
+*****After these commands , execute the Certification Test*****
+
+rm -fr ~/.bash_history   *// cmd to remove bash history //*
+
+
+
+
+*********** Steps to Create the Image *****************
+waagent -deprovision+user –force   ( Run in putty )
+
+*// After the above command open the command prompt *//
+az login 
+
+az vm deallocate --resource-group myResourceGroup --name myVM
+az vm generalize --resource-group myResourceGroup --name myVM
+az image create --resource-group myResourceGroup --name myImage --source myVM
+
+
+********** Create the SAAS URL Using azure file explorer ********
+
+
